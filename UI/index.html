@@ -1,0 +1,79 @@
+<html>
+    <head>
+   
+
+        <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+        </script>
+
+        <script type = "text/javascript" language = "javascript">
+
+            $(document).ready(function() {
+
+                $.get('/v1/page/welcome', function (data) {
+                            $('#loader').html(data);
+                        })
+ 
+                $("#proceed").click(function(event){
+                  
+                    var selVal = $('#option').val();
+                  
+
+                    if(selVal == "Add Product") {
+                        
+
+                        $.get('/v1/page/product', function (data) {
+                            $('#loader').html(data);
+                        })
+                    } else if(selVal == "View Current/all product locations") {
+                      
+
+                        $.get('/v1/page/location', function (data) {
+                            $('#loader').html(data);
+                        })
+                    } else if(selVal == "Update location") {
+                        console.log("else if");
+
+                        $.get('/v1/page/location/update', function (data) {
+                            $('#loader').html(data);
+                        })
+                    } else {
+                    
+                        $.get('/v1/page/welcome', function (data) {
+                            $('#loader').html(data);
+                        })
+                    }
+
+                })
+            });
+
+        </script>
+
+    </head>
+  
+ 
+
+</html>
+<body>
+    
+  
+
+    <center>
+        <div>
+            
+                <label for="Options">Select operation to perform:</label>
+                <input type = "button" id = "proceed" value = "Proceed" /> 
+                <select id="option" name="options">
+                    <option value=" Select options ">Select options</option>
+                    <option value="Add Product">Add product</option>
+                    <option value="View Current/all product locations">View Current/all product locations</option>
+                    <option value="Update location">Update location</option>
+                </select>
+            </t>
+            <input type = "button" id = "proceed" value = "New game" /> 
+        </div>
+    </center>
+    <div id="loader">
+        
+    </div>
+  
+</body>
