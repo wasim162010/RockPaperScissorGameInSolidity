@@ -9,42 +9,54 @@
 
             $(document).ready(function() {
 
-                $.get('/v1/page/welcome', function (data) {
-                            $('#loader').html(data);
-                        })
- 
-                $("#proceed").click(function(event){
-                  
-                    var selVal = $('#option').val();
-                  
+                $("#beginGame").click(function(event){
 
-                    if(selVal == "Add Product") {
-                        
+                    console.log("beginGame");
+                     var addr = $("#playerOneAddr").val();
+                    let url = "/v1/gameId?addr="+ addr;
+                    console.log(url);
+                    $.get(url, function (data) {
+                        console.log(data);
+                       $("#gameId").val(data);
+                       $("#playerOneGameId").val(data);
+                       $("#playerTwoGameId").val(data);
+                       $("#randomOne").val($("#txtRandomNumber").val());  
+                       $("#userOneAddress").val($("#playerOneAddr").val()); 
 
-                        $.get('/v1/page/product', function (data) {
-                            $('#loader').html(data);
-                        })
-                    } else if(selVal == "View Current/all product locations") {
-                      
+                            
+                    })
 
-                        $.get('/v1/page/location', function (data) {
-                            $('#loader').html(data);
-                        })
-                    } else if(selVal == "Update location") {
-                        console.log("else if");
+                }); //begingame
 
-                        $.get('/v1/page/location/update', function (data) {
-                            $('#loader').html(data);
-                        })
-                    } else {
-                    
-                        $.get('/v1/page/welcome', function (data) {
-                            $('#loader').html(data);
-                        })
-                    }
+                $("#playerOneBet").click(function(event){
+                        var addr = $("#playerOneAddr").val();
+                        let url = "/v1/bet?gameexpiry="+ $("#expiryTime").val() + '&amount='+$("#userOneBet").val()
+                                    +'&choice=2' //hard coded
+                                    +'&playerAddr='+$("#userOneAddress").val()
+                                    +'&playerRandomness='+$("#randomOne").val()
+                                    +'&gameID='+$("#playerOneGameId").val()
 
-                })
+                        console.log(url);
+
+                        $.post(url, function (data) {
+                                console.log(data);
+                        })
+
+                }); //playerOneBet
+
+
+                
             });
+
+        </script>
+
+    </head>
+</html>
+<body>
+  
+
+
+</body>
 
         </script>
 
@@ -58,22 +70,51 @@
   
 
     <center>
-        <div>
-            
-                <label for="Options">Select operation to perform:</label>
-                <input type = "button" id = "proceed" value = "Proceed" /> 
-                <select id="option" name="options">
-                    <option value=" Select options ">Select options</option>
-                    <option value="Add Product">Add product</option>
-                    <option value="View Current/all product locations">View Current/all product locations</option>
-                    <option value="Update location">Update location</option>
-                </select>
+        <div id="startDiv">
+                Start the game </br> 
+                Game expiry time(in hours) <input type="text" id="expiryTime" /> </t>
+                Ramdomness generator <input type="text" id="txtRandomNumber" /> </t>
+                Your address <input type="text" id="playerOneAddr" /> </t>
+                <br/>       <br/>
+                <input type = "button" id = "beginGame" value = "Create new game" /> 
+                <input type = "text" id = "gameId" readonly />    
             </t>
-            <input type = "button" id = "proceed" value = "New game" /> 
         </div>
+
+        <div id="playerOneDiv">
+                <h1> Player one </h1> <br/ >
+                Game ID <input type="text" id="playerOneGameId" readonly /> </t>
+                Random Number <input type="text" id="randomOne" readonly/> </t>
+                User address <input type="text" id="userOneAddress" readonly/> </t>
+                Select your choice
+                    <select id="playerOneOptions" name="options">
+                            <option value=" Select options ">Select options</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Paper">Paper</option>
+                            <option value="Scissor">Scissor</option>
+                    </select></t> 
+                Your bet <input type="text" id="userOneBet" /> </t>
+                <input type = "button" id = "playerOneBet" value = "Player one bet" /> 
+        </div>
+
+        <div id="playerTwoDiv">
+                <h1> Player one </h1> <br/ >
+                Game ID <input type="text" id="playerTwoGameId" readonly /> </t>
+                Random Number <input type="text" id="randomTwo" readonly/> </t>
+                User address <input type="text" id="userTwoAddress" readonly/> </t>
+                Select your choice
+                    <select id="playerTwoOptions" name="options">
+                            <option value=" Select options ">Select options</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Paper">Paper</option>
+                            <option value="Scissor">Scissor</option>
+                    </select></t> 
+                Your bet <input type="text" id="userTwoBet" /> </t>
+                <input type = "button" id = "playerTwoBet" value = "Player Two bet" /> 
+        </div>
+
+
     </center>
-    <div id="loader">
-        
-    </div>
+    
   
 </body>
