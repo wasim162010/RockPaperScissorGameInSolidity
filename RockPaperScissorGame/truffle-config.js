@@ -1,3 +1,13 @@
+var HDWalletProvider = require("truffle-hdwallet-provider");
+var dotenvConfig = require('dotenv').config();
+
+const MNEMONIC = 'paste your mnenomic here'
+
+//'short decade demand train total truck awkward utility fire tail wide sign';
+//'chicken wash price brick river negative potato train put evil horn service';
+//process.env.playerOneKey;
+
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -36,6 +46,20 @@ module.exports = {
    */
 
   networks: {
+
+    development: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: "*"
+    },
+
+    ropsten: {
+      provider: function() {
+        return new HDWalletProvider(MNEMONIC, "https://ropsten.infura.io/v3/9116e53c01e14b0580e566fc02645003")
+      },
+      network_id: 3,
+      gas: 7852834      
+    }
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal

@@ -16,6 +16,8 @@
     "dotenv": "^10.0.0",
     "ethereumjs-tx": "^2.1.2",
     "express": "^4.17.1",
+    "truffle-hdwallet-provider": "^1.0.17",
     "web3": "^1.4.0"
-  }
+  },
+  "devDependencies": {}
 }

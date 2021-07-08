@@ -17,6 +17,7 @@
 
                 $("#viewWinner").click(function(event){
                     
+                    //NOTE  : As it is a  simulation UI, as there is a single test screen for both the players so for simplicity  we are using the playerOne address .
                      let url = "/v1/winner?gameID="+$("#playerOneGameId").val() +'&playerAddr='+$("#userOneAddress").val()
 
                      console.log(url);
