@@ -61,6 +61,12 @@ UI Screenshots :
 ![image](https://user-images.githubusercontent.com/47940538/124918523-c095ad80-e012-11eb-9d85-cf6bdfdc487b.png)
 
 
+Contract deployment on testnet[Ropsten]:
+
+Deployed contract address :    0x18A8c8C3c86ff0C6DFA71CD2a4dD976FbFabb21D
+![image](https://user-images.githubusercontent.com/47940538/124920755-4c103e00-e015-11eb-8328-b400e3eeb05b.png)
+
+
 
 
 
