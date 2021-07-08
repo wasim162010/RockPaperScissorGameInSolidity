@@ -1,9 +1,6 @@
 # RockPaperScissorGameInSolidity
 
 
-It uses OpenZeppelin Truffle Upgrades to upgrade the contract.
-
-To deploy contract : npx truffle migrate 
 
 Flow :
 
