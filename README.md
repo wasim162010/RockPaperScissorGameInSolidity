@@ -6,115 +6,65 @@ It uses OpenZeppelin Truffle Upgrades to upgrade the contract.
 To deploy contract : npx truffle migrate 
 
 Flow :
-Remix IDE screenshots:
 
+
+1. Deploying smart contract.
+ 
+2. Starting game by generating the gameid
+
+3. Player 1 place bet.
+
+4. Player 2 place bet 
+ 
+5. End the game
+
+6. View result.
 
  
+ ![image](https://user-images.githubusercontent.com/47940538/124918216-6a286f00-e012-11eb-9f14-095e0040730c.png)
 
-Initiate game:
+![image](https://user-images.githubusercontent.com/47940538/124918253-76acc780-e012-11eb-813e-f36ff9e86ed8.png)
 
+![image](https://user-images.githubusercontent.com/47940538/124918274-7dd3d580-e012-11eb-9e59-3877304dab8d.png)
 
- 
+![image](https://user-images.githubusercontent.com/47940538/124918283-81fff300-e012-11eb-8ab5-ea573b148507.png)
 
-Smart contract execution [Remix IDE]
+![image](https://user-images.githubusercontent.com/47940538/124918299-86c4a700-e012-11eb-8827-0bf955ac58d1.png)
 
-Deploying smart contract:
- 
+![image](https://user-images.githubusercontent.com/47940538/124918320-8d531e80-e012-11eb-959b-80967fdc2b6c.png)
 
-Starting game by generating the gameid:
+![image](https://user-images.githubusercontent.com/47940538/124918338-904e0f00-e012-11eb-9ff3-83014e0faecc.png)
 
- 
+![image](https://user-images.githubusercontent.com/47940538/124918372-9512c300-e012-11eb-806e-2b7419428602.png)
 
-
-
-Placing bet:
-Player 1 addr   0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
-
- 
- 
+![image](https://user-images.githubusercontent.com/47940538/124918385-980db380-e012-11eb-9202-6663b216277f.png)
 
 
-Player 2 addr :   0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
- 
+UI Screenshots :
+![image](https://user-images.githubusercontent.com/47940538/124918421-a3f97580-e012-11eb-9dc2-8335dc779acd.png)
 
- 
+![image](https://user-images.githubusercontent.com/47940538/124918433-a6f46600-e012-11eb-827b-5e3e6f0c9dc6.png)
 
-End game:
-When we end game from UI, ‘judgeWinner’ gets called.
+![image](https://user-images.githubusercontent.com/47940538/124918446-a9ef5680-e012-11eb-9726-103844b8bbd5.png)
 
- 
- 
+![image](https://user-images.githubusercontent.com/47940538/124918457-acea4700-e012-11eb-9281-8ce7fec447f1.png)
 
+![image](https://user-images.githubusercontent.com/47940538/124918471-b07dce00-e012-11eb-9eda-94b0214c964a.png)
 
-View result:
-When we clock on ‘View result’ game from UI, ‘judgeWinner’ gets called.
- 
+![image](https://user-images.githubusercontent.com/47940538/124918473-b2e02800-e012-11eb-9d89-44804848d192.png)
 
+![image](https://user-images.githubusercontent.com/47940538/124918484-b5428200-e012-11eb-9215-2424a5f17fb1.png)
 
-UI Screenshots:
+![image](https://user-images.githubusercontent.com/47940538/124918491-b7a4dc00-e012-11eb-94c5-bbd67f364fd3.png)
 
- 
+![image](https://user-images.githubusercontent.com/47940538/124918502-ba9fcc80-e012-11eb-9d44-f05e0becd595.png)
 
+![image](https://user-images.githubusercontent.com/47940538/124918511-bd9abd00-e012-11eb-93da-0c4319a2dafc.png)
 
-Player one initiated game by generating game id
- 
-
-
-Player one placing bet :
-
- 
-
-
-
-
-Console log
- 
-
-Player 2 placing bet
-
- 
-
-Console log
-
- 
-
-End game:
-
- 
-
-Console log
- 
-
-View result :
-
- 
-
-Console log [No log statements were put in method, but no error got logged.]
-
- 
-
-
-
-In case of Tie
-
- 
-
-
-Contract deployment on testnet:
+![image](https://user-images.githubusercontent.com/47940538/124918523-c095ad80-e012-11eb-9d85-cf6bdfdc487b.png)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-![image](https://user-images.githubusercontent.com/47940538/124917874-f9815280-e011-11eb-9552-646749199041.png)
