@@ -68,25 +68,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"getVal\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_val\",\"type\":\"bytes32\"}],\"name\":\"incr\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_choice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"playerRandomness\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"noOfHour\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"gameID\",\"type\":\"bytes32\"}],\"name\":\"initiateGame\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/conduent/test/testmm/RockPaperScissorGame/contracts/add.sol\":\"add\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/conduent/test/testmm/RockPaperScissorGame/contracts/add.sol\":{\"keccak256\":\"0xa4538d43beee4b86e00d73a76ace25267370013bd84691d4185659e66043dcd9\",\"urls\":[\"bzz-raw://e77afd8c85ff8a3c9b31d7dfe25ee7774929f9866e84c8e320bcf0fdd2b84138\",\"dweb:/ipfs/QmUSbKh64s5EhReL4SFivDwh5kpeQ36Ask1ec2ZM5tzZ7c\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50610157806100206000396000f3fe6080604052600436106100345760003560e01c806361b21b611461003957806373d6d0a314610067578063e1cb0e52146100c7575b600080fd5b6100656004803603602081101561004f57600080fd5b81019080803590602001909291905050506100f2565b005b6100b16004803603608081101561007d57600080fd5b8101908080359060200190929190803590602001909291908035906020019092919080359060200190929190505050610107565b6040518082815260200191505060405180910390f35b3480156100d357600080fd5b506100dc610119565b6040518082815260200191505060405180910390f35b60003390506001600054016000819055505050565b60008082905080915050949350505050565b6000805490509056fea265627a7a72315820a15c33ee3f1ab18f7a747ceba7040d392e26e2a05b757e2297ac81819420b80f64736f6c63430005100032",
-  "deployedBytecode": "0x6080604052600436106100345760003560e01c806361b21b611461003957806373d6d0a314610067578063e1cb0e52146100c7575b600080fd5b6100656004803603602081101561004f57600080fd5b81019080803590602001909291905050506100f2565b005b6100b16004803603608081101561007d57600080fd5b8101908080359060200190929190803590602001909291908035906020019092919080359060200190929190505050610107565b6040518082815260200191505060405180910390f35b3480156100d357600080fd5b506100dc610119565b6040518082815260200191505060405180910390f35b60003390506001600054016000819055505050565b60008082905080915050949350505050565b6000805490509056fea265627a7a72315820a15c33ee3f1ab18f7a747ceba7040d392e26e2a05b757e2297ac81819420b80f64736f6c63430005100032",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"getVal\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_val\",\"type\":\"bytes32\"}],\"name\":\"incr\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_choice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"playerRandomness\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"noOfHour\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"gameID\",\"type\":\"bytes32\"}],\"name\":\"initiateGame\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/conduent/RockPaperScissorGameInSolidity/RockPaperScissorGame/contracts/add.sol\":\"add\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/conduent/RockPaperScissorGameInSolidity/RockPaperScissorGame/contracts/add.sol\":{\"keccak256\":\"0xa4538d43beee4b86e00d73a76ace25267370013bd84691d4185659e66043dcd9\",\"urls\":[\"bzz-raw://e77afd8c85ff8a3c9b31d7dfe25ee7774929f9866e84c8e320bcf0fdd2b84138\",\"dweb:/ipfs/QmUSbKh64s5EhReL4SFivDwh5kpeQ36Ask1ec2ZM5tzZ7c\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610157806100206000396000f3fe6080604052600436106100345760003560e01c806361b21b611461003957806373d6d0a314610067578063e1cb0e52146100c7575b600080fd5b6100656004803603602081101561004f57600080fd5b81019080803590602001909291905050506100f2565b005b6100b16004803603608081101561007d57600080fd5b8101908080359060200190929190803590602001909291908035906020019092919080359060200190929190505050610107565b6040518082815260200191505060405180910390f35b3480156100d357600080fd5b506100dc610119565b6040518082815260200191505060405180910390f35b60003390506001600054016000819055505050565b60008082905080915050949350505050565b6000805490509056fea265627a7a72315820a8911905ffea7239e03e848c50f1978ba31288fc3dba4d4c93a17c2684099d8164736f6c63430005100032",
+  "deployedBytecode": "0x6080604052600436106100345760003560e01c806361b21b611461003957806373d6d0a314610067578063e1cb0e52146100c7575b600080fd5b6100656004803603602081101561004f57600080fd5b81019080803590602001909291905050506100f2565b005b6100b16004803603608081101561007d57600080fd5b8101908080359060200190929190803590602001909291908035906020019092919080359060200190929190505050610107565b6040518082815260200191505060405180910390f35b3480156100d357600080fd5b506100dc610119565b6040518082815260200191505060405180910390f35b60003390506001600054016000819055505050565b60008082905080915050949350505050565b6000805490509056fea265627a7a72315820a8911905ffea7239e03e848c50f1978ba31288fc3dba4d4c93a17c2684099d8164736f6c63430005100032",
   "sourceMap": "66:2189:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:2189:2;;;;;;;",
   "deployedSourceMap": "66:2189:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;103:109;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;103:109:2;;;;;;;;;;;;;;;;;:::i;:::-;;281:1970;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;281:1970:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;216:60;;8:9:-1;5:2;;;30:1;27;20:12;5:2;216:60:2;;;:::i;:::-;;;;;;;;;;;;;;;;;;;103:109;154:14;171:10;154:27;;195:1;192;;:4;189:1;:7;;;;103:109;;:::o;281:1970::-;394:7;421:15;438:6;421:23;;2236:7;2229:14;;;281:1970;;;;;;:::o;216:60::-;249:4;270:1;;263:8;;216:60;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract add {\n \n    uint a ;\n\n\n  \n  function incr(bytes32 _val) public payable {\n      address   addr = msg.sender;\n      a= a +1;\n     \n    \n  }\n\n  function getVal() public returns(uint) {\n      return a;\n  }\n\n\n  function initiateGame(uint _choice, uint playerRandomness, uint noOfHour, bytes32 gameID) payable public returns(bytes32) {\n       \n        bytes32 _gameId =gameID; \n        \n       // require (_choice >= 0,\"choice shouldbe greater then zero\"); \n        //require (_choice <= 2, \"choice should be less then or equal to two\"); \n    \n                // gameIDToGame[_gameId].playerOneAddress = msg.sender;\n                // gameIDToGame[_gameId].playerOneChoice = keccak256(abi.encodePacked(_choice, playerRandomness));\n                // gameIDToGame[_gameId].playerOneBetAmount = msg.value;\n    /*\n        if(address(gameIDToGame[_gameId].playerOneAddress) == address(0)) { //player 1 has placed his bet , so player 2 will put his bet\n\n                gameIDToGame[_gameId].playerOneAddress = msg.sender;\n                gameIDToGame[_gameId].playerOneChoice = keccak256(abi.encodePacked(_choice, playerRandomness));\n                gameIDToGame[_gameId].playerOneBetAmount = msg.value;\n           // require(now < gameIDToGame[_gameId].expiryTime, \"Max waiting time has already passed\");\n            \n            //\n           // gameIDToGame[_gameId].playerTwoAddress = msg.sender;\n        //    gameIDToGame[_gameId].playerTwoChoice = keccak256(abi.encodePacked(_choice, playerRandomness));\n          //  gameIDToGame[_gameId].playerTwoBetAmount = msg.value;\n            \n        } else {//player 1 will place his bet\n        \n          //  gameIDToGame[_gameId].playerOneAddress = msg.sender;\n          //  gameIDToGame[_gameId].playerOneChoice = keccak256(abi.encodePacked(_choice, playerRandomness));\n          //  gameIDToGame[_gameId].playerOneBetAmount = msg.value;\n          \n           gameIDToGame[_gameId].playerTwoAddress = msg.sender;\n           gameIDToGame[_gameId].playerTwoChoice = keccak256(abi.encodePacked(_choice, playerRandomness));\n           gameIDToGame[_gameId].playerTwoBetAmount = msg.value;\n        }\n    */\n        return _gameId;\n\n    }\n\n\n}\n",
-  "sourcePath": "/Users/conduent/test/testmm/RockPaperScissorGame/contracts/add.sol",
+  "sourcePath": "/Users/conduent/RockPaperScissorGameInSolidity/RockPaperScissorGame/contracts/add.sol",
   "ast": {
-    "absolutePath": "/Users/conduent/test/testmm/RockPaperScissorGame/contracts/add.sol",
+    "absolutePath": "/Users/conduent/RockPaperScissorGameInSolidity/RockPaperScissorGame/contracts/add.sol",
     "exportedSymbols": {
       "add": [
-        694
+        692
       ]
     },
-    "id": 695,
+    "id": 693,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 646,
+        "id": 644,
         "literals": [
           "solidity",
           ">=",
@@ -105,19 +105,19 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 694,
+        "id": 692,
         "linearizedBaseContracts": [
-          694
+          692
         ],
         "name": "add",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 648,
+            "id": 646,
             "name": "a",
             "nodeType": "VariableDeclaration",
-            "scope": 694,
+            "scope": 692,
             "src": "87:6:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -126,7 +126,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 647,
+              "id": 645,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "87:4:2",
@@ -140,21 +140,21 @@
           },
           {
             "body": {
-              "id": 664,
+              "id": 662,
               "nodeType": "Block",
               "src": "146:66:2",
               "statements": [
                 {
                   "assignments": [
-                    654
+                    652
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 654,
+                      "id": 652,
                       "name": "addr",
                       "nodeType": "VariableDeclaration",
-                      "scope": 664,
+                      "scope": 662,
                       "src": "154:14:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -163,7 +163,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 653,
+                        "id": 651,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "154:7:2",
@@ -177,23 +177,23 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 657,
+                  "id": 655,
                   "initialValue": {
                     "argumentTypes": null,
                     "expression": {
                       "argumentTypes": null,
-                      "id": 655,
+                      "id": 653,
                       "name": "msg",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 709,
+                      "referencedDeclaration": 1317,
                       "src": "171:3:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_magic_message",
                         "typeString": "msg"
                       }
                     },
-                    "id": 656,
+                    "id": 654,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -213,18 +213,18 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 662,
+                    "id": 660,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 658,
+                      "id": 656,
                       "name": "a",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 648,
+                      "referencedDeclaration": 646,
                       "src": "189:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -239,18 +239,18 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 661,
+                      "id": 659,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 659,
+                        "id": 657,
                         "name": "a",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 648,
+                        "referencedDeclaration": 646,
                         "src": "192:1:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -262,7 +262,7 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 660,
+                        "id": 658,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -289,29 +289,29 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 663,
+                  "id": 661,
                   "nodeType": "ExpressionStatement",
                   "src": "189:7:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 665,
+            "id": 663,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "incr",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 651,
+              "id": 649,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 650,
+                  "id": 648,
                   "name": "_val",
                   "nodeType": "VariableDeclaration",
-                  "scope": 665,
+                  "scope": 663,
                   "src": "117:12:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -320,7 +320,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 649,
+                    "id": 647,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "117:7:2",
@@ -336,12 +336,12 @@
               "src": "116:14:2"
             },
             "returnParameters": {
-              "id": 652,
+              "id": 650,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "146:0:2"
             },
-            "scope": 694,
+            "scope": 692,
             "src": "103:109:2",
             "stateMutability": "payable",
             "superFunction": null,
@@ -349,54 +349,54 @@
           },
           {
             "body": {
-              "id": 672,
+              "id": 670,
               "nodeType": "Block",
               "src": "255:21:2",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 670,
+                    "id": 668,
                     "name": "a",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 648,
+                    "referencedDeclaration": 646,
                     "src": "270:1:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 669,
-                  "id": 671,
+                  "functionReturnParameters": 667,
+                  "id": 669,
                   "nodeType": "Return",
                   "src": "263:8:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 673,
+            "id": 671,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getVal",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 666,
+              "id": 664,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "231:2:2"
             },
             "returnParameters": {
-              "id": 669,
+              "id": 667,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 668,
+                  "id": 666,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 673,
+                  "scope": 671,
                   "src": "249:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -405,7 +405,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 667,
+                    "id": 665,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "249:4:2",
@@ -420,7 +420,7 @@
               ],
               "src": "248:6:2"
             },
-            "scope": 694,
+            "scope": 692,
             "src": "216:60:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -428,21 +428,21 @@
           },
           {
             "body": {
-              "id": 692,
+              "id": 690,
               "nodeType": "Block",
               "src": "403:1848:2",
               "statements": [
                 {
                   "assignments": [
-                    687
+                    685
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 687,
+                      "id": 685,
                       "name": "_gameId",
                       "nodeType": "VariableDeclaration",
-                      "scope": 692,
+                      "scope": 690,
                       "src": "421:15:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -451,7 +451,7 @@
                         "typeString": "bytes32"
                       },
                       "typeName": {
-                        "id": 686,
+                        "id": 684,
                         "name": "bytes32",
                         "nodeType": "ElementaryTypeName",
                         "src": "421:7:2",
@@ -464,14 +464,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 689,
+                  "id": 687,
                   "initialValue": {
                     "argumentTypes": null,
-                    "id": 688,
+                    "id": 686,
                     "name": "gameID",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 681,
+                    "referencedDeclaration": 679,
                     "src": "438:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
@@ -484,41 +484,41 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 690,
+                    "id": 688,
                     "name": "_gameId",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 687,
+                    "referencedDeclaration": 685,
                     "src": "2236:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 685,
-                  "id": 691,
+                  "functionReturnParameters": 683,
+                  "id": 689,
                   "nodeType": "Return",
                   "src": "2229:14:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 693,
+            "id": 691,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "initiateGame",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 682,
+              "id": 680,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 675,
+                  "id": 673,
                   "name": "_choice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 693,
+                  "scope": 691,
                   "src": "303:12:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -527,7 +527,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 674,
+                    "id": 672,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "303:4:2",
@@ -541,10 +541,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 677,
+                  "id": 675,
                   "name": "playerRandomness",
                   "nodeType": "VariableDeclaration",
-                  "scope": 693,
+                  "scope": 691,
                   "src": "317:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -553,7 +553,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 676,
+                    "id": 674,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "317:4:2",
@@ -567,10 +567,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 679,
+                  "id": 677,
                   "name": "noOfHour",
                   "nodeType": "VariableDeclaration",
-                  "scope": 693,
+                  "scope": 691,
                   "src": "340:13:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -579,7 +579,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 678,
+                    "id": 676,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "340:4:2",
@@ -593,10 +593,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 681,
+                  "id": 679,
                   "name": "gameID",
                   "nodeType": "VariableDeclaration",
-                  "scope": 693,
+                  "scope": 691,
                   "src": "355:14:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -605,7 +605,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 680,
+                    "id": 678,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "355:7:2",
@@ -621,15 +621,15 @@
               "src": "302:68:2"
             },
             "returnParameters": {
-              "id": 685,
+              "id": 683,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 684,
+                  "id": 682,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 693,
+                  "scope": 691,
                   "src": "394:7:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -638,7 +638,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 683,
+                    "id": 681,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "394:7:2",
@@ -653,14 +653,14 @@
               ],
               "src": "393:9:2"
             },
-            "scope": 694,
+            "scope": 692,
             "src": "281:1970:2",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 695,
+        "scope": 693,
         "src": "66:2189:2"
       }
     ],
@@ -668,10 +668,10 @@
   },
   "legacyAST": {
     "attributes": {
-      "absolutePath": "/Users/conduent/test/testmm/RockPaperScissorGame/contracts/add.sol",
+      "absolutePath": "/Users/conduent/RockPaperScissorGameInSolidity/RockPaperScissorGame/contracts/add.sol",
       "exportedSymbols": {
         "add": [
-          694
+          692
         ]
       }
     },
@@ -688,7 +688,7 @@
             ".0"
           ]
         },
-        "id": 646,
+        "id": 644,
         "name": "PragmaDirective",
         "src": "32:32:2"
       },
@@ -704,17 +704,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            694
+            692
           ],
           "name": "add",
-          "scope": 695
+          "scope": 693
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "a",
-              "scope": 694,
+              "scope": 692,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -727,12 +727,12 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 647,
+                "id": 645,
                 "name": "ElementaryTypeName",
                 "src": "87:4:2"
               }
             ],
-            "id": 648,
+            "id": 646,
             "name": "VariableDeclaration",
             "src": "87:6:2"
           },
@@ -746,7 +746,7 @@
                 null
               ],
               "name": "incr",
-              "scope": 694,
+              "scope": 692,
               "stateMutability": "payable",
               "superFunction": null,
               "visibility": "public"
@@ -758,7 +758,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_val",
-                      "scope": 665,
+                      "scope": 663,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -771,17 +771,17 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 649,
+                        "id": 647,
                         "name": "ElementaryTypeName",
                         "src": "117:7:2"
                       }
                     ],
-                    "id": 650,
+                    "id": 648,
                     "name": "VariableDeclaration",
                     "src": "117:12:2"
                   }
                 ],
-                "id": 651,
+                "id": 649,
                 "name": "ParameterList",
                 "src": "116:14:2"
               },
@@ -792,7 +792,7 @@
                   ]
                 },
                 "children": [],
-                "id": 652,
+                "id": 650,
                 "name": "ParameterList",
                 "src": "146:0:2"
               },
@@ -801,7 +801,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        654
+                        652
                       ]
                     },
                     "children": [
@@ -809,7 +809,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "addr",
-                          "scope": 664,
+                          "scope": 662,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "address",
@@ -823,12 +823,12 @@
                               "stateMutability": "nonpayable",
                               "type": "address"
                             },
-                            "id": 653,
+                            "id": 651,
                             "name": "ElementaryTypeName",
                             "src": "154:7:2"
                           }
                         ],
-                        "id": 654,
+                        "id": 652,
                         "name": "VariableDeclaration",
                         "src": "154:14:2"
                       },
@@ -850,21 +850,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 709,
+                              "referencedDeclaration": 1317,
                               "type": "msg",
                               "value": "msg"
                             },
-                            "id": 655,
+                            "id": 653,
                             "name": "Identifier",
                             "src": "171:3:2"
                           }
                         ],
-                        "id": 656,
+                        "id": 654,
                         "name": "MemberAccess",
                         "src": "171:10:2"
                       }
                     ],
-                    "id": 657,
+                    "id": 655,
                     "name": "VariableDeclarationStatement",
                     "src": "154:27:2"
                   },
@@ -887,11 +887,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 648,
+                              "referencedDeclaration": 646,
                               "type": "uint256",
                               "value": "a"
                             },
-                            "id": 658,
+                            "id": 656,
                             "name": "Identifier",
                             "src": "189:1:2"
                           },
@@ -916,11 +916,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 648,
+                                  "referencedDeclaration": 646,
                                   "type": "uint256",
                                   "value": "a"
                                 },
-                                "id": 659,
+                                "id": 657,
                                 "name": "Identifier",
                                 "src": "192:1:2"
                               },
@@ -937,32 +937,32 @@
                                   "type": "int_const 1",
                                   "value": "1"
                                 },
-                                "id": 660,
+                                "id": 658,
                                 "name": "Literal",
                                 "src": "195:1:2"
                               }
                             ],
-                            "id": 661,
+                            "id": 659,
                             "name": "BinaryOperation",
                             "src": "192:4:2"
                           }
                         ],
-                        "id": 662,
+                        "id": 660,
                         "name": "Assignment",
                         "src": "189:7:2"
                       }
                     ],
-                    "id": 663,
+                    "id": 661,
                     "name": "ExpressionStatement",
                     "src": "189:7:2"
                   }
                 ],
-                "id": 664,
+                "id": 662,
                 "name": "Block",
                 "src": "146:66:2"
               }
             ],
-            "id": 665,
+            "id": 663,
             "name": "FunctionDefinition",
             "src": "103:109:2"
           },
@@ -976,7 +976,7 @@
                 null
               ],
               "name": "getVal",
-              "scope": 694,
+              "scope": 692,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -989,7 +989,7 @@
                   ]
                 },
                 "children": [],
-                "id": 666,
+                "id": 664,
                 "name": "ParameterList",
                 "src": "231:2:2"
               },
@@ -999,7 +999,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 673,
+                      "scope": 671,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1012,17 +1012,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 667,
+                        "id": 665,
                         "name": "ElementaryTypeName",
                         "src": "249:4:2"
                       }
                     ],
-                    "id": 668,
+                    "id": 666,
                     "name": "VariableDeclaration",
                     "src": "249:4:2"
                   }
                 ],
-                "id": 669,
+                "id": 667,
                 "name": "ParameterList",
                 "src": "248:6:2"
               },
@@ -1030,7 +1030,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 669
+                      "functionReturnParameters": 667
                     },
                     "children": [
                       {
@@ -1039,26 +1039,26 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 648,
+                          "referencedDeclaration": 646,
                           "type": "uint256",
                           "value": "a"
                         },
-                        "id": 670,
+                        "id": 668,
                         "name": "Identifier",
                         "src": "270:1:2"
                       }
                     ],
-                    "id": 671,
+                    "id": 669,
                     "name": "Return",
                     "src": "263:8:2"
                   }
                 ],
-                "id": 672,
+                "id": 670,
                 "name": "Block",
                 "src": "255:21:2"
               }
             ],
-            "id": 673,
+            "id": 671,
             "name": "FunctionDefinition",
             "src": "216:60:2"
           },
@@ -1072,7 +1072,7 @@
                 null
               ],
               "name": "initiateGame",
-              "scope": 694,
+              "scope": 692,
               "stateMutability": "payable",
               "superFunction": null,
               "visibility": "public"
@@ -1084,7 +1084,33 @@
                     "attributes": {
                       "constant": false,
                       "name": "_choice",
-                      "scope": 693,
+                      "scope": 691,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 672,
+                        "name": "ElementaryTypeName",
+                        "src": "303:4:2"
+                      }
+                    ],
+                    "id": 673,
+                    "name": "VariableDeclaration",
+                    "src": "303:12:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "playerRandomness",
+                      "scope": 691,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1099,18 +1125,18 @@
                         },
                         "id": 674,
                         "name": "ElementaryTypeName",
-                        "src": "303:4:2"
+                        "src": "317:4:2"
                       }
                     ],
                     "id": 675,
                     "name": "VariableDeclaration",
-                    "src": "303:12:2"
+                    "src": "317:21:2"
                   },
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "playerRandomness",
-                      "scope": 693,
+                      "name": "noOfHour",
+                      "scope": 691,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1125,36 +1151,10 @@
                         },
                         "id": 676,
                         "name": "ElementaryTypeName",
-                        "src": "317:4:2"
-                      }
-                    ],
-                    "id": 677,
-                    "name": "VariableDeclaration",
-                    "src": "317:21:2"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "noOfHour",
-                      "scope": 693,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "uint256",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "uint",
-                          "type": "uint256"
-                        },
-                        "id": 678,
-                        "name": "ElementaryTypeName",
                         "src": "340:4:2"
                       }
                     ],
-                    "id": 679,
+                    "id": 677,
                     "name": "VariableDeclaration",
                     "src": "340:13:2"
                   },
@@ -1162,7 +1162,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "gameID",
-                      "scope": 693,
+                      "scope": 691,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1175,17 +1175,17 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 680,
+                        "id": 678,
                         "name": "ElementaryTypeName",
                         "src": "355:7:2"
                       }
                     ],
-                    "id": 681,
+                    "id": 679,
                     "name": "VariableDeclaration",
                     "src": "355:14:2"
                   }
                 ],
-                "id": 682,
+                "id": 680,
                 "name": "ParameterList",
                 "src": "302:68:2"
               },
@@ -1195,7 +1195,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 693,
+                      "scope": 691,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes32",
@@ -1208,17 +1208,17 @@
                           "name": "bytes32",
                           "type": "bytes32"
                         },
-                        "id": 683,
+                        "id": 681,
                         "name": "ElementaryTypeName",
                         "src": "394:7:2"
                       }
                     ],
-                    "id": 684,
+                    "id": 682,
                     "name": "VariableDeclaration",
                     "src": "394:7:2"
                   }
                 ],
-                "id": 685,
+                "id": 683,
                 "name": "ParameterList",
                 "src": "393:9:2"
               },
@@ -1227,7 +1227,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        687
+                        685
                       ]
                     },
                     "children": [
@@ -1235,7 +1235,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "_gameId",
-                          "scope": 692,
+                          "scope": 690,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "bytes32",
@@ -1248,12 +1248,12 @@
                               "name": "bytes32",
                               "type": "bytes32"
                             },
-                            "id": 686,
+                            "id": 684,
                             "name": "ElementaryTypeName",
                             "src": "421:7:2"
                           }
                         ],
-                        "id": 687,
+                        "id": 685,
                         "name": "VariableDeclaration",
                         "src": "421:15:2"
                       },
@@ -1263,22 +1263,22 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 681,
+                          "referencedDeclaration": 679,
                           "type": "bytes32",
                           "value": "gameID"
                         },
-                        "id": 688,
+                        "id": 686,
                         "name": "Identifier",
                         "src": "438:6:2"
                       }
                     ],
-                    "id": 689,
+                    "id": 687,
                     "name": "VariableDeclarationStatement",
                     "src": "421:23:2"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 685
+                      "functionReturnParameters": 683
                     },
                     "children": [
                       {
@@ -1287,36 +1287,36 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 687,
+                          "referencedDeclaration": 685,
                           "type": "bytes32",
                           "value": "_gameId"
                         },
-                        "id": 690,
+                        "id": 688,
                         "name": "Identifier",
                         "src": "2236:7:2"
                       }
                     ],
-                    "id": 691,
+                    "id": 689,
                     "name": "Return",
                     "src": "2229:14:2"
                   }
                 ],
-                "id": 692,
+                "id": 690,
                 "name": "Block",
                 "src": "403:1848:2"
               }
             ],
-            "id": 693,
+            "id": 691,
             "name": "FunctionDefinition",
             "src": "281:1970:2"
           }
         ],
-        "id": 694,
+        "id": 692,
         "name": "ContractDefinition",
         "src": "66:2189:2"
       }
     ],
-    "id": 695,
+    "id": 693,
     "name": "SourceUnit",
     "src": "32:2224:2"
   },
@@ -1328,12 +1328,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xc717092d19E7B4D7035809216f57837bb7ED38b3",
-      "transactionHash": "0x7ce25c79f164b07120a10e1d11a9e50d3443f3a1486925353e29eed961b5d96d"
+      "address": "0x4CD4283032FC44E22690e54110Dd167E8f185473",
+      "transactionHash": "0x67fd82ca85a2c58ee67057c08aa6e806605ed9181489a1f2961f3ee82b39ec16"
     }
   },
   "schemaVersion": "3.4.0",
-  "updatedAt": "2021-07-07T19:53:12.139Z",
+  "updatedAt": "2021-07-07T20:21:32.183Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

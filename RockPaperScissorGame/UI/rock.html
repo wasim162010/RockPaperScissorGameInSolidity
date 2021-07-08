@@ -9,6 +9,11 @@
 
             $(document).ready(function() {
 
+                $("#playerOneBet").prop("disabled", true);
+                $("#playerTwoBet").prop("disabled", true);  //endGame viewWinner
+                $("#endGame").prop("disabled", true);
+                $("#viewWinner").prop("disabled", true);
+
 
                 $("#viewWinner").click(function(event){
                     
@@ -19,6 +24,7 @@
                      $.get(url, function(data){
                          console.log("winner is ", data);
                          document.getElementById("winnerText").innerHTML="Winner is" + " " + data;
+                        
                      })
                                     
                  })//viewWinner
@@ -40,6 +46,8 @@
                        $("#randomOne").val($("#txtRandomNumber").val());  
                        $("#userOneAddress").val($("#playerOneAddr").val()); 
 
+                       $("#playerOneBet").prop("disabled", false);
+
                     })
 
                 }); //begingame
@@ -54,12 +62,7 @@
 
                         if(playerOneOption == 'Rock') {
 
-                            //  let url = "/v1/bet?gameexpiry="+ $("#expiryTime").val() + '&amount='+$("#userOneBet").val()
-                            //         +'&choice=0' //hard coded
-                            //         +'&playerAddr='+$("#userOneAddress").val()
-                            //         +'&playerRandomness='+$("#randomOne").val()
-                            //         +'&gameID='+$("#playerOneGameId").val()
-                            //         +'&user=1'
+                        
 
                               let url = "/v1/bet?amount="+ $("#userOneBet").val()
                                     +'&choice=0' 
@@ -76,6 +79,7 @@
                                 $.post(url, function (data) {
                                         console.log(data);
                                         alert("Bet placed");
+                                        $("#playerTwoBet").prop("disabled", false); 
                                 })
 
                             } else {
@@ -85,13 +89,6 @@
                            
 
                         }  else if(playerOneOption == 'Paper') {
-
-                            //  let url = "/v1/bet?gameexpiry="+ $("#expiryTime").val() + '&amount='+$("#userOneBet").val()
-                            //         +'&choice=1'
-                            //         +'&playerAddr='+$("#userOneAddress").val()
-                            //         +'&playerRandomness='+$("#randomOne").val()
-                            //         +'&gameID='+$("#playerOneGameId").val()
-                            //         +'&user=1'
 
                             let url = "/v1/bet?amount="+ $("#userOneBet").val()
                                     +'&choice=1' 
@@ -107,6 +104,7 @@
                              $.post(url, function (data) {
                                     console.log(data);
                                     alert("Bet placed");
+                                    $("#playerTwoBet").prop("disabled", false); 
                             })
                             } else {
 
@@ -114,13 +112,6 @@
                             }
 
                         }  else if(playerOneOption == 'Scissor') {
-
-                            //  let url = "/v1/bet?gameexpiry="+ $("#expiryTime").val() + '&amount='+$("#userOneBet").val()
-                            //         +'&choice=2' //hard coded
-                            //         +'&playerAddr='+$("#userOneAddress").val()
-                            //         +'&playerRandomness='+$("#randomOne").val()
-                            //         +'&gameID='+$("#playerOneGameId").val()
-                            //         +'&user=1'
 
                             let url = "/v1/bet?amount="+ $("#userOneBet").val()
                                     +'&choice=2' 
@@ -136,6 +127,7 @@
                              $.post(url, function (data) {
                                     console.log(data);
                                     alert("Bet placed");
+                                    $("#playerTwoBet").prop("disabled", false); 
                             })
 
                         } else {
@@ -149,7 +141,7 @@
                     
                 }); //playerOneBet
 
-                 $("#playerTwoBet").click(function(event){
+                $("#playerTwoBet").click(function(event){
 
                          var playerTwoOption = $("#playerTwoOptions :selected").text();
                         if(playerTwoOption == 'Rock') {
@@ -165,24 +157,18 @@
 
                             if($("#userTwoBet").val() != "") {
 
-                             $.post(url, function (data) {
-                                    console.log(data);
-                                    alert("Bet placed");
-                            })
+                                $.post(url, function (data) {
+                                        console.log(data);
+                                        alert("Bet placed");
+                                        $("#endGame").prop("disabled", false);
+                                })
 
-                        } else {
+                                } else {
 
-                            alert("Enter bet amount");
-                        }
+                                    alert("Enter bet amount");
+                                }
 
                         }  else if(playerTwoOption == 'Paper') {
-
-                            //  let url = "/v1/bet?gameexpiry="+ $("#expiryTime").val() + '&amount='+$("#userTwoBet").val()
-                            //         +'&choice=1' 
-                            //         +'&playerAddr='+$("#userTwoAddress").val()
-                            //         +'&playerRandomness='+$("#randomTwo").val()
-                            //         +'&gameID='+$("#playerOneGameId").val()
-                            //         +'&user=2'
 
                             let url = "/v1/bet?&amount="+$("#userTwoBet").val()
                                     +'&choice=1' 
@@ -198,6 +184,7 @@
                              $.post(url, function (data) {
                                     console.log(data);
                                     alert("Bet placed");
+                                    $("#endGame").prop("disabled", false);
                             })
 
                         } else {
@@ -206,13 +193,6 @@
                         }
 
                         }  else if(playerTwoOption == 'Scissor') {
-
-                            //  let url = "/v1/bet?gameexpiry="+ $("#expiryTime").val() + '&amount='+$("#userTwoBet").val()
-                            //         +'&choice=2' 
-                            //         +'&playerAddr='+$("#userTwoAddress").val()
-                            //         +'&playerRandomness='+$("#randomTwo").val()
-                            //         +'&gameID='+$("#playerOneGameId").val()
-                            //         +'&user=2'
 
                             let url = "/v1/bet?&amount="+$("#userTwoBet").val()
                                     +'&choice=2' 
@@ -229,6 +209,7 @@
                              $.post(url, function (data) {
                                     console.log(data);
                                     alert("Bet placed");
+                                    $("#endGame").prop("disabled", false);
                             })
 
                         } else {
@@ -239,9 +220,7 @@
 
                         } else {
                             alert("Select option");
-                        }
-                        //var addr = $("#playerOneAddr").val();
-                        
+                        }                        
 
                 }); //playerTwoBet
 
@@ -291,7 +270,13 @@
                             $.post(url, function (data) {
                                     console.log(data);
                                     document.getElementById("endGame").value="Close Curtain"; 
-                                   // $("#endGame").val("Game has ended. Refresh page to start new game");
+
+                                    $("#playerOneBet").prop("disabled", true);
+                                    $("#playerTwoBet").prop("disabled", true);
+                                    $("#viewWinner").prop("disabled", false);
+                                    
+                                    $("#endGame").val("Game has ended. Refresh page to start new game");
+                                    $("#endGame").prop("disabled", true);
                                     
                             })
 
@@ -323,7 +308,7 @@
                 Your address <input type="text" id="playerOneAddr" value="0x181f92EeEabB05Dc04F0C2cbD70753f9ddCa576A" /> </t>
                 <br/>       <br/>
                 <input type = "button" id = "beginGame" value = "Create new game" /> 
-                <input type = "text" id = "gameId" readonly />    
+                <input type = "text" id = "gameId" readonly hidden />    
             </t>
         </div>
 
@@ -359,7 +344,7 @@
                 <input type = "button" id = "playerTwoBet" value = "Player Two bet" /> 
         </div>
 
-        <div id="endGame">
+        <div id="endGameDiv">
                 <h1>End the game</h1> </t>
 
                 <input type="button" id="endGame" value="End game" /> </t>

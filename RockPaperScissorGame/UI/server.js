@@ -5,36 +5,13 @@ const Web3 = require('web3')
 var Tx = require("ethereumjs-tx").Transaction;
 var dotenvConfig = require('dotenv').config();
 
-// app.get('/', async (req, res) => {
-//     await loadMetaMask()
-
-//    // console.log(process.env.DB_HOST);
-//     res.sendFile(path.join(__dirname + '/index.html'));
-
-// });
 
 
-
-// app.post('/increment', async (req, res) =>{
-//   //  console.log("increment");
-//     await incr();
-// 	res.send("incrementing value");
-	
-//  });
-
-app.get('/rock', async (req, res) =>{
+app.get('/', async (req, res) =>{
    await loadMetaMask()
     res.sendFile(path.join(__dirname + '/rock.html'));
 	
  });
-
-//  app.get('/getValue', async (req, res) =>{
-   
-// 	//	console.log("Calling reset")
-//     await contract.methods.totalSupply().call((err, result) => { console.log("updated value is " + result) })
-      
-
-//  });
 
 
 app.listen(8082);
@@ -45,10 +22,8 @@ console.log("server is up");
 // ganache url
 const web3 = new Web3("http://127.0.0.1:7545")
 //**NOTE** 'address' value should be changed to the address of the account which sends the transaction */
-const addr = '0x181f92EeEabB05Dc04F0C2cbD70753f9ddCa576A' 
-const rockAddr = '0x9eDc608Db6bf4A75fDF989Fb9D038764260483d5' //contract address
+const rockAddr = '0x534d63d4b9e5cA173fF11326998ABea2517C0E11' //game contract address
 
-	
 var abi = [
 	{
 		"inputs": [],
@@ -289,72 +264,11 @@ var abi = [
 	}
 ]
 
-const contAddr = '0xF3164fa95fDac51a288fE5D1f9Fa1f543FE5fBD3' 
-// const pkey = Buffer.from('68070420e79b5eb95983dbf1ab5af48f904e38c1404911318948395d734de5e7','hex')
-const contract = new web3.eth.Contract(abi, contAddr)
+
+//const contAddr = '0xF3164fa95fDac51a288fE5D1f9Fa1f543FE5fBD3' 
 const rockContract = new web3.eth.Contract(abi, rockAddr)
 
-/*
-async function incr() {
-
-  //  console.log("incr impl");
-	
-    web3.eth.getTransactionCount(addr, (err, txCount) => {
-
-     // (uint _choice, uint playerRandomness, uint noOfHour, bytes32 gameID) 
-        const txObject = {
-                nonce:    web3.utils.toHex(txCount),
-                gasLimit: web3.utils.toHex(800000), 
-                gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
-                to: contAddr,
-                value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
-                data: contract.methods.initiateGame(1, 12, 1, '0x5ffd832bc096ef015dc274558425ed449c6b78577d2641b968780a2a4708e5e6').encodeABI()
-             //   data: contract.methods.incr('0x068518702a577f9338be0b06572f3d043b4f50707323a51ca86a09a6469d15eb').encodeABI()
-        }
-
-        const tx = new Tx(txObject)
-        tx.sign(pkey)
-
-        const serializedTx = tx.serialize()
-        const raw = '0x' + serializedTx.toString('hex')
-
-        web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-          //  console.log('err:', err, 'txHash:', txHash)
-
-          
-        })
-
-    })
-
-
-	
-
-} //send ends
-*/
-
-async function loadMetaMask() {
-
-    if (typeof web3 !== 'undefined'){
-                    
-        console.log('MetaMask is installed')
-
-        web3.eth.getAccounts(function(err, accounts){
-            
-            myAccountAddress = accounts[0];
-            console.log(myAccountAddress);
-        }) //get accounts
-    } //if
-    else{
-        console.log('MetaMask is not installed')
-    }//else
-
-    
-
-
-}
-
 //rock UI
-
 
  app.get('/v1/gameId', function(req, res){
    
@@ -363,31 +277,54 @@ async function loadMetaMask() {
 	    	res.end(counterVal)
 
 	  });
-    
  });
 
+ const promisify = (inner) =>
+    new Promise((resolve, reject) =>
+        inner((err, res) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(res);
+            }
+        })
+    );
 
-app.get('/v1/winner', function(req, res){
+app.get('/v1/winner', async(req, res)=>{
   
-	  var curVal = getWinner(req.query.gameID, req.query.playerAddr);
+
+	var _val = await getWinner(req.query.gameID, req.query.playerAddr) ;
+
+	res.end(_val);
+	// await res.send(getWinnerAddress(req.query.gameID, req.query.playerAddr).then(function(addr){
+	// 	console.log("/v1/winner")
+	// 	console.log(addr);
+	// 	return  addr.then(function(data){
+	// 		 data;
+	// 	});
+	// }));
+
+
+
+
+	//   // getWinner(req.query.gameID, req.query.playerAddr);
    
-	  curVal.then(winneraddr => {
-        console.log("/v1/winner  ",winneraddr);
-	    	res.end(winneraddr);
-	  });
+	//   curVal.then(winneraddr => {
+    //     console.log("/v1/winner  ",winneraddr);
+	//     	res.end(winneraddr);
+	//   });
     
  });
 
 
  app.post('/v1/bet', function(req, res){
         // var curVal = placeBet(req.query.choice, req.query.playerRandomness, req.query.gameexpiry, req.query.playerAddr,req.query.amount, req.query.gameID, req.query.user);   
-
+		console.log("/v1/bet");
         var curVal = placeBet(req.query.choice, req.query.playerRandomness, req.query.playerAddr,req.query.amount, req.query.gameID, req.query.user); 
 
         curVal.then(_bet => {
           res.end(_bet)
           });
-    
  });
 
 
@@ -403,54 +340,15 @@ app.post('/v1/endgame', function(req, res){
           res.end(data);
           
       });
-  
  });
  
-
-/*
-async function initiateGame() {
-
-    console.log("initiate game");
-	
-    web3.eth.getTransactionCount(addr, (err, txCount) => {
-
-      var block = web3.eth.getBlock("latest");
-      var _gasLimit = block.gasLimit/block.transactions.length;
-      console.log("_gasLimit  ", _gasLimit);
-      var _gaspPrice =  web3.eth.getGasPrice(function(e, r) { console.log(r) })
-      console.log("_gaspPrice  ", _gaspPrice);
-
-     // (uint _choice, uint playerRandomness, uint noOfHour, bytes32 gameID) 
-        const txObject = {
-                nonce:    web3.utils.toHex(txCount),
-               gasLimit: web3.utils.toHex(800000), 
-                gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
-                to: contAddr,
-                value:    web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),
-                data: contract.methods.initiateGame(1, 12, 1, '0x5ffd832bc096ef015dc274558425ed449c6b78577d2641b968780a2a4708e5e6').encodeABI()
-             //   data: contract.methods.incr('0x068518702a577f9338be0b06572f3d043b4f50707323a51ca86a09a6469d15eb').encodeABI()
-        }
-
-        const tx = new Tx(txObject)
-        tx.sign(pkey)
-
-        const serializedTx = tx.serialize()
-        const raw = '0x' + serializedTx.toString('hex')
-
-        web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-            console.log('err:', err, 'txHash:', txHash)
-
-        })
-    })
-}
-*/
 
 //using
 async function getGameID(_addr) {
 
     var val=0;
     await rockContract.methods.newGameID().call(
-             {from: _addr},  //working
+             {from: _addr},  
             (err, result) => {
             val = result;
             console.log("err ", err);
@@ -462,58 +360,80 @@ async function getGameID(_addr) {
 //using
 async function getWinner(_gameID, playerAddr) {
 
-  //  console.log(_gameID, playerAddr);
+    console.log(_gameID, playerAddr);
 
     var val=0;
     await rockContract.methods.getWinnerDetails(_gameID).call(
-             {from: playerAddr},  //working
+             {from: playerAddr},  
             (err, result) => {
-            val = result;
-         //   console.log("val ",val);
-            }
-        )
-    return val;
-  
-   // console.log("Calling getWinner")
+			val = result;  
+			}
+	)
+
+
+  return val;
   
 }
 
-//ar curVal = placeBet(req.query.choice, req.query.playerRandomness, req.query.playerAddr,req.query.amount, req.query.gameID, req.query.user); 
-//using
-async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID, _user) {
-      //  console.log("placebet");
-       
+async function getWinnerAddress(_gameID, playerAddr) {
+    var address, winner
+	console.log("     getWinnerAddress      ");
+	address = promisify(cb => rockContract.methods.getWinnerDetails(_gameID).call(
+		{from: playerAddr},  
+		(err, result) => {
+		console.log("err ",err, "result ", result);
+		console.log("result ", result);
+		address = result
+		console.log("address ", address);
+		return address;
+		}
+))
+	//.  return await address;
 	
+}
+
+//ar curVal = placeBet(req.query.choice, req.query.playerRandomness, req.query.playerAddr,req.query.amount, req.query.gameID, req.query.user); 
+
+async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID, _user) {
+
+	console.log(choice,  playerRandomness, playerAddr, betAmount, gameID, _user);
+
     web3.eth.getTransactionCount(playerAddr, (err, txCount) => {//changed addr
-      
+      console.log("getTransactionCount");
+	
       var _gasPrice = web3.eth.gasPrice;
       var _gasLimit = web3.eth.getBlock("latest").gasLimit; //referring to current block gas limit
-
+	  console.log(_gasPrice,_gasLimit);
         const txObject = {
                 nonce:    web3.utils.toHex(txCount),
                 gasLimit:  web3.utils.toHex(800000), //previous
                 gasPrice:  web3.utils.toHex(web3.utils.toWei('10', 'gwei')), //previous
-                to: contAddr,
-                value:  web3.utils.toHex(web3.utils.toWei(betAmount, 'wei')),   //web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),//previous value
-                data: contract.methods.initiateGame(choice, playerRandomness, gameID).encodeABI() 
+                to: rockAddr, //contAddr,
+				value:  web3.utils.toHex(web3.utils.toWei(betAmount, 'wei')),   //web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),//previous value
+				data: rockContract.methods.initiateGame(choice, playerRandomness, gameID).encodeABI() 
+                // data: contract.methods.initiateGame(choice, playerRandomness, gameID).encodeABI() rockContract
         }
         const tx = new Tx(txObject)
-     
+		console.log("tx ", tx);
         if(_user == 1) {
 
-            
+			  console.log("user one");
+			
               const pkey = Buffer.from(process.env.playerOneKey,'hex')
               tx.sign(pkey)
-
-              const serializedTx = tx.serialize()
-              const raw = '0x' + serializedTx.toString('hex')
+			  console.log("tx.sign");
+			  const serializedTx = tx.serialize()
+			  console.log("serilizaedtx");
+			  const raw = '0x' + serializedTx.toString('hex')
+			  console.log("raw");
               web3.eth.sendSignedTransaction(raw, (err, txHash) => {
+				  console.log("err :", err,  "txHash ", txHash);
                   return "bet placed successfully"
               
               })
 
         } else {
-             // console.log("player 2 ")
+              console.log("user two ")
               const pkey = Buffer.from(process.env.playerTwoKey,'hex')
            
               tx.sign(pkey)
@@ -522,7 +442,7 @@ async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID
               const raw = '0x' + serializedTx.toString('hex')
               web3.eth.sendSignedTransaction(raw, (err, txHash) => {
 
-                  console.log("err ", err);
+				console.log("err :", err,  "txHash ", txHash);
                   return "bet placed successfully"
               })
         }
@@ -533,32 +453,39 @@ async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID
 
 async function endGame(_gameId, _playerOne, _playerOneChoice, _playerOneRandomness, _playerTwo, _playerTwoChoice, _playerTwoRandomness  ) {
 
+		console.log(" 						**	endGame	**						");
+		console.log(_gameId, _playerOne, _playerOneChoice, _playerOneRandomness, _playerTwo, _playerTwoChoice, _playerTwoRandomness );
         var message;
         web3.eth.getTransactionCount(_playerOne, (err, txCount) => {
 
         var _gasPrice = web3.eth.gasPrice;
-        var _gasLimit = web3.eth.getBlock("latest").gasLimit;
+		var _gasLimit = web3.eth.getBlock("latest").gasLimit;
+		console.log(_gasPrice,_gasLimit );
         const txObject = {
               
                 nonce:    web3.utils.toHex(txCount),
                 gasLimit: web3.utils.toHex(800000), 
                 gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
-                to: contAddr,
-                data: contract.methods.judgeWinner(_gameId, _playerOne, _playerOneChoice, _playerOneRandomness, _playerTwo, _playerTwoChoice, _playerTwoRandomness).encodeABI() 
+				to:rockAddr,// contAddr,//
+				data: rockContract.methods.judgeWinner(_gameId, _playerOne, _playerOneChoice, _playerOneRandomness, _playerTwo, _playerTwoChoice, _playerTwoRandomness).encodeABI() 
+                // data: contract.methods.judgeWinner(_gameId, _playerOne, _playerOneChoice, _playerOneRandomness, _playerTwo, _playerTwoChoice, _playerTwoRandomness).encodeABI() 
             
         }
 
         const tx = new Tx(txObject)
-     
+		console.log("tx");
 
         const pkey = Buffer.from(process.env.playerOneKey,'hex')
-       
+		console.log("pk");
         tx.sign(pkey)
-       
-        const serializedTx = tx.serialize()
-        const raw = '0x' + serializedTx.toString('hex')
-       var obj =  web3.eth.sendSignedTransaction(raw, (err, txHash) => {
-                 console.log("err ", err);
+		console.log("tx.sign");
+		const serializedTx = tx.serialize()
+		console.log("serialized");
+		const raw = '0x' + serializedTx.toString('hex')
+		console.log("raw");
+        var obj =  web3.eth.sendSignedTransaction(raw, (err, txHash) => {
+				 console.log("err ", err);
+				 console.log("txHash ", txHash);
                   if(txHash != null) {
                          
                     message ='game ended successfully'; 
@@ -573,6 +500,23 @@ async function endGame(_gameId, _playerOne, _playerOneChoice, _playerOneRandomne
 
         })//web3
     
+}
+
+
+async function loadMetaMask() {
+
+    if (typeof web3 !== 'undefined'){
+                    
+        console.log('MetaMask is installed')
+        web3.eth.getAccounts(function(err, accounts){
+            myAccountAddress = accounts[0];
+            console.log(myAccountAddress);
+        }) //get accounts
+    } //if
+    else{
+        console.log('MetaMask is not installed')
+    }//else
+
 }
 
 

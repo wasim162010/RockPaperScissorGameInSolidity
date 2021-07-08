@@ -97,9 +97,9 @@ contract RockPaperScissors {
                     gameIDToGame[_gameId].winner = address(0);
                     handleTie(playerOne, playerTwo, _gameId ); 
 
-                } else if ((_playerOneChoice == ROCK && _playerTwoChoice == SCISSORS) 
-                        || (_playerOneChoice == SCISSORS && _playerTwoChoice == PAPER) 
-                        || (_playerOneChoice == PAPER && _playerTwoChoice == ROCK)) 
+                } else if ((_playerOneChoice == ROCK && _playerTwoChoice == SCISSORS) //p1 Rock wins over scissors (because rock smashes scissors)
+                        || (_playerOneChoice == SCISSORS && _playerTwoChoice == PAPER) //p1 Scissors wins over paper (because scissors cut paper)
+                        || (_playerOneChoice == PAPER && _playerTwoChoice == ROCK)) //p1 Paper wins over rock (because paper covers rock)
                 { // p1 won
                    
                     winningParty = "playerOne";
@@ -107,9 +107,9 @@ contract RockPaperScissors {
                     rewardWinner(playerOne, _gameId);
 
                 } 
-                else if ((_playerTwoChoice == ROCK && _playerOneChoice == SCISSORS) 
-                        || (_playerTwoChoice == SCISSORS && _playerOneChoice == PAPER) 
-                        || (_playerTwoChoice == PAPER && _playerOneChoice == ROCK)) 
+                else if ((_playerTwoChoice == ROCK && _playerOneChoice == SCISSORS) //p2 Rock wins over scissors (because rock smashes scissors)
+                        || (_playerTwoChoice == SCISSORS && _playerOneChoice == PAPER) //p2 Scissors wins over paper (because scissors cut paper)
+                        || (_playerTwoChoice == PAPER && _playerOneChoice == ROCK)) //p2 Paper wins over rock (because paper covers rock)
                 { // p2 won
 
                     winningParty = "playerTwo";
