@@ -161,46 +161,6 @@ function handleTie(address playerOne, address playerTwo, bytes32 _gameId) privat
 }
 
 
- function fetchExpiryTime(bytes32 _gameId) private view returns(bool) {
-        
-        if(gameIDToGame[_gameId].expiryTime == 0) {
-            return true;
-            
-        } else {
-            return false;
-        }
-
-    }
-
-function fetchAddr(bytes32 _gameId) public view returns(bool) {
-            
-        if(address(gameIDToGame[_gameId].playerOneAddress) == address(0)) {
-            return true;
-            
-        } else {
-            return false;
-        }
-    }
-
-      function getContBAlance () 
-     
-        view
-        public
-        returns (uint)
-    {
-        return address(this).balance;
-    }
-    
-    function getAddrBalance (address addr)   
-        view
-        public
-        returns (uint)
-    {
-        return addr.balance;
-    }
-
-
-  
 
 }
 

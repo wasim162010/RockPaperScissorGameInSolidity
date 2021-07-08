@@ -294,25 +294,7 @@ app.get('/v1/winner', async(req, res)=>{
   
 
 	var _val = await getWinner(req.query.gameID, req.query.playerAddr) ;
-
 	res.end(_val);
-	// await res.send(getWinnerAddress(req.query.gameID, req.query.playerAddr).then(function(addr){
-	// 	console.log("/v1/winner")
-	// 	console.log(addr);
-	// 	return  addr.then(function(data){
-	// 		 data;
-	// 	});
-	// }));
-
-
-
-
-	//   // getWinner(req.query.gameID, req.query.playerAddr);
-   
-	//   curVal.then(winneraddr => {
-    //     console.log("/v1/winner  ",winneraddr);
-	//     	res.end(winneraddr);
-	//   });
     
  });
 
@@ -392,8 +374,6 @@ async function getWinnerAddress(_gameID, playerAddr) {
 	
 }
 
-//ar curVal = placeBet(req.query.choice, req.query.playerRandomness, req.query.playerAddr,req.query.amount, req.query.gameID, req.query.user); 
-
 async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID, _user) {
 
 	console.log(choice,  playerRandomness, playerAddr, betAmount, gameID, _user);
@@ -402,12 +382,19 @@ async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID
       console.log("getTransactionCount");
 	
       var _gasPrice = web3.eth.gasPrice;
-      var _gasLimit = web3.eth.getBlock("latest").gasLimit; //referring to current block gas limit
+	  var _gasLimit = web3.eth.getBlock("latest").gasLimit; //referring to current block gas limit
+	
+	  console.log(_gasPrice,  _gasLimit, _gasLimit2);
+
+	  if(_gasLimit < _gasLimit2) {
+			_gasLimit = _gasLimit2;
+	  }
+
 	  console.log(_gasPrice,_gasLimit);
         const txObject = {
                 nonce:    web3.utils.toHex(txCount),
-                gasLimit:  web3.utils.toHex(800000), //previous
-                gasPrice:  web3.utils.toHex(web3.utils.toWei('10', 'gwei')), //previous
+                gasLimit:   web3.utils.toHex(800000), //previous
+                gasPrice:   web3.utils.toHex(web3.utils.toWei('10', 'gwei')), //previous
                 to: rockAddr, //contAddr,
 				value:  web3.utils.toHex(web3.utils.toWei(betAmount, 'wei')),   //web3.utils.toHex(web3.utils.toWei('0.1', 'ether')),//previous value
 				data: rockContract.methods.initiateGame(choice, playerRandomness, gameID).encodeABI() 
