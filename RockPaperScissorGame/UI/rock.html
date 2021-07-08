@@ -23,7 +23,11 @@
 
                      $.get(url, function(data){
                          console.log("winner is ", data);
-                         document.getElementById("winnerText").innerHTML="Winner is" + " " + data;
+                         if(data == '0x0000000000000000000000000000000000000000'){
+                            document.getElementById("winnerText").innerHTML="There is no winner.It's a tie.";
+                         } else {
+                            document.getElementById("winnerText").innerHTML="Winner is" + " " + data;
+                         }
                         
                      })
                                     
@@ -305,7 +309,7 @@
                 Start the game </br> </br> </br>
                 Game expiry time(in hours) <input type="text" id="expiryTime" value="24 hours(1 day)" readonly /> </t>
                 Ramdomness generator <input type="text" id="txtRandomNumber" /> </t>
-                Your address <input type="text" id="playerOneAddr" value="0x181f92EeEabB05Dc04F0C2cbD70753f9ddCa576A" /> </t>
+                Your address <input type="text" id="playerOneAddr"  /> </t>
                 <br/>       <br/>
                 <input type = "button" id = "beginGame" value = "Create new game" /> 
                 <input type = "text" id = "gameId" readonly hidden />    
@@ -316,7 +320,7 @@
                 <h1> Player one </h1> <br/ >
                 Game ID <input type="text" id="playerOneGameId" readonly /> </t>
                 Random Number <input type="text" id="randomOne" readonly/> </t>
-                User address <input type="text" id="userOneAddress" value="0x181f92EeEabB05Dc04F0C2cbD70753f9ddCa576A" readonly/> </t>
+                User address <input type="text" id="userOneAddress"  readonly/> </t>
                 Select your choice
                     <select id="playerOneOptions" name="options">
                             <option value=" Select options ">Select options</option>
@@ -332,7 +336,7 @@
                 <h1> Player two </h1> <br/ >
                 Game ID <input type="text" id="playerTwoGameId" readonly /> </t>
                 Random Number <input type="text" id="randomTwo" /> </t>
-                User address <input type="text" id="userTwoAddress" value="0x68dA55353DeFcDFAdc440eBC9b99B90Ca9179032" /> </t>
+                User address <input type="text" id="userTwoAddress" /> </t>
                 Select your choice
                     <select id="playerTwoOptions" name="options">
                             <option value=" Select options ">Select options</option>

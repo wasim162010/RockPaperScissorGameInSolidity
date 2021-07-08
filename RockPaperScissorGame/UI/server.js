@@ -357,22 +357,22 @@ async function getWinner(_gameID, playerAddr) {
   
 }
 
-async function getWinnerAddress(_gameID, playerAddr) {
-    var address, winner
-	console.log("     getWinnerAddress      ");
-	address = promisify(cb => rockContract.methods.getWinnerDetails(_gameID).call(
-		{from: playerAddr},  
-		(err, result) => {
-		console.log("err ",err, "result ", result);
-		console.log("result ", result);
-		address = result
-		console.log("address ", address);
-		return address;
-		}
-))
-	//.  return await address;
+// async function getWinnerAddress(_gameID, playerAddr) {
+//     var address, winner
+// 	console.log("     getWinnerAddress      ");
+// 	address = promisify(cb => rockContract.methods.getWinnerDetails(_gameID).call(
+// 		{from: playerAddr},  
+// 		(err, result) => {
+// 		console.log("err ",err, "result ", result);
+// 		console.log("result ", result);
+// 		address = result
+// 		console.log("address ", address);
+// 		return address;
+// 		}
+// ))
+// 	//.  return await address;
 	
-}
+// }
 
 async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID, _user) {
 
@@ -384,11 +384,6 @@ async function placeBet(choice,  playerRandomness, playerAddr, betAmount, gameID
       var _gasPrice = web3.eth.gasPrice;
 	  var _gasLimit = web3.eth.getBlock("latest").gasLimit; //referring to current block gas limit
 	
-	  console.log(_gasPrice,  _gasLimit, _gasLimit2);
-
-	  if(_gasLimit < _gasLimit2) {
-			_gasLimit = _gasLimit2;
-	  }
 
 	  console.log(_gasPrice,_gasLimit);
         const txObject = {
