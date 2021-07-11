@@ -86,7 +86,8 @@ contract RockPaperScissors {
             uint playerOneRandomness, // CHANGED - Randomness added which prevents the other user from correctly guessing the move of the other player
             address playerTwo,
             uint _playerTwoChoice,
-            uint playerTwoRandomness) public returns(string memory)
+            uint playerTwoRandomness
+            ) public returns(string memory)
         {
                 string memory winningParty;
                 require (_gameId != 0,"game id shouldnt be zero");
@@ -123,7 +124,7 @@ contract RockPaperScissors {
 }
 
     
-    function rewardWinner(address  winnerAddress, bytes32 _gameId) private returns(bool){
+function rewardWinner(address  winnerAddress, bytes32 _gameId) private returns(bool){
 
         if(gameIDToGame[_gameId].playerOneAddress == winnerAddress) {
             
