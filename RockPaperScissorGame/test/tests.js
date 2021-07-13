@@ -1,10 +1,3 @@
-/*
-
-    THIS IS AN ONGOING WORK AND IS YET TO E COMPLETED. 
-
-
-*/
-
 const { assert } = require('chai');
 
 const RockPaperScissors = artifacts.require('RockPaperScissors');
@@ -17,7 +10,7 @@ contract('RockPaperScissors', (accounts) =>{
     console.log("player1 ", player1);
     var player2 = accounts[2];
     console.log("player2 ", player2);
-    var gameID ;
+    
     var instance ;
     var p1Bet = web3.utils.toWei('20000', 'wei');
     var p2Bet = web3.utils.toWei('15000', "wei");
@@ -25,87 +18,166 @@ contract('RockPaperScissors', (accounts) =>{
     it('should deploy contract properly', async() => {
 
         instance = await RockPaperScissors.deployed();
-        console.log(instance.address);
         assert.notEqual(instance.address !== '');
-        
-
     });
 
     it('should create unique game id', async() => {
 
-        gameID = await instance.newGameID.call({from:player1});
-        console.log(gameID);
+        var gameID  = await instance.newGameID.call({from:player1});
         assert.notEqual(gameID !== '');
 
     });
 
-    it('Scenario 1', async() => {
-        
-        instance.initiateGame(0, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet }); //p1 is rock
-        instance.initiateGame(1, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); // p2 is paper
-        
-        await instance.judgeWinner(gameID, player1, 0, p1RandomnessGenerator, player2, 1, p2RandomnessGenerator, {from: player1});
-        
-        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
-        console.log(winnerAddr);
-        
-        assert(instance.balance !== '');
-
-
-    });
-
-    it('Scenario 2', async() => {
-        
-        instance.initiateGame(0, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  //p1 is rock 0
-        instance.initiateGame(2, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); // p2 is scissor 2
-        
-        await instance.judgeWinner(gameID, player1, 0, p1RandomnessGenerator, player2, 2, p2RandomnessGenerator, {from: player1});
-        
-        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
-        console.log(winnerAddr);
+ 
+    it('player one select rock, player 2 selects paper.', async() => {
       
-        assert(instance.balance !== '');
+        var gameID  = await instance.newGameID.call({from:player1});
+
+        var contractInstance = await RockPaperScissors.deployed();
+
+        await instance.initiateGame(0, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  
+        
+
+        await instance.initiateGame(1, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); 
+     
+        await instance.judgeWinner(gameID, player1, 0, p1RandomnessGenerator, player2, 1, p2RandomnessGenerator, {from: player1});
+      
+        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
+        console.log("winner is " , winnerAddr);
+      
+        assert(winnerAddr == player2);
+
+
     });
 
-    it('Scenario 3', async() => {
-        
-        instance.initiateGame(1, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  //p1 is rock 1
-        instance.initiateGame(2, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); // p2 is scissor 2
-        
+      
+    it('player one select paper, player 2 selects scissor.', async() => {
+       var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+
+        await instance.initiateGame(1, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet }); 
+        let balance = await web3.eth.getBalance(instance.address);
+        console.log('balance is ', balance);
+
+        await instance.initiateGame(2, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); 
+              
         await instance.judgeWinner(gameID, player1, 1, p1RandomnessGenerator, player2, 2, p2RandomnessGenerator, {from: player1});
-        
+       
         var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
-        console.log(winnerAddr);
+        console.log("winner is " , winnerAddr);
+       
+
+        assert(winnerAddr == player2);
         
-        assert(instance.balance !== '');
+    });
+   
+ it('player one select paper, player 2 selects rock.', async() => { 
+        var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+          
+        await instance.initiateGame(1, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  
+      
+        await instance.initiateGame(0, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); 
+        
+        await instance.judgeWinner(gameID, player1, 1, p1RandomnessGenerator, player2, 0, p2RandomnessGenerator, {from: player1});
+       
+        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
+        console.log("winner is " , winnerAddr);
+        
+
+        assert(winnerAddr == player1);
+    });
+
+     it('player one select rock, player 2 selects scissor.', async() => { 
+       
+        var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+          
+        await instance.initiateGame(0, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  
+        
+        await instance.initiateGame(2, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); 
+         
+        await instance.judgeWinner(gameID, player1, 0, p1RandomnessGenerator, player2, 2, p2RandomnessGenerator, {from: player1});
+       
+        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
+        console.log("winner is " , winnerAddr);
+      
+
+        assert(winnerAddr == player1);
     });
 
 
-    it('Scenario 4', async() => {
+     it('player one select scissor, player 2 selects rock.', async() => { 
+      
+        var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+          
+        await instance.initiateGame(2, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  
+  
+        await instance.initiateGame(0, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet });
+
+        await instance.judgeWinner(gameID, player1, 2, p1RandomnessGenerator, player2, 0, p2RandomnessGenerator, {from: player1});
         
-        instance.initiateGame(1, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  //p1 is rock 1
-        instance.initiateGame(1, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); // p2 is scissor 1
+        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
+        console.log("winner is " , winnerAddr);
+      
+
+        assert(winnerAddr == player2);
+    });
+
+
+    it('player one select rock, player 2 selects rock.', async() => { 
+     
+        var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+          
+        await instance.initiateGame(0, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  
+        
+        await instance.initiateGame(0, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet });
+           
+        await instance.judgeWinner(gameID, player1, 0, p1RandomnessGenerator, player2, 0, p2RandomnessGenerator, {from: player1});
+    
+        var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
+        console.log("winner is " , winnerAddr);
+  
+        assert(winnerAddr != player1);
+        assert(winnerAddr != player2);
+    });
+    
+    it('player one select paper, player 2 selects paper.', async() => { 
+      
+        var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+          
+        await instance.initiateGame(1, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet }); 
+     
+        await instance.initiateGame(1, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); 
         
         await instance.judgeWinner(gameID, player1, 1, p1RandomnessGenerator, player2, 1, p2RandomnessGenerator, {from: player1});
         
         var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
-        console.log(winnerAddr);
-        
-        assert(instance.balance !== '');
+        console.log("winner is " , winnerAddr);
+        assert(winnerAddr != player1);
+        assert(winnerAddr != player2);
     });
 
-
-    it('Scenario 4', async() => {
+    it('player one select scissor, player 2 selects scissor.', async() => { 
+      
+        var gameID  = await instance.newGameID.call({from:player1});
+        var contractInstance = await RockPaperScissors.deployed();
+          
+        await instance.initiateGame(2, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet }); 
+     
+        await instance.initiateGame(2, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); 
         
-        instance.initiateGame(1, p1RandomnessGenerator, gameID,{from: player1, value: p1Bet });  //p1 is rock 1
-        instance.initiateGame(1, p2RandomnessGenerator, gameID, {from: player2, value: p2Bet }); // p2 is scissor 1
-        
-        await instance.judgeWinner(gameID, player1, 1, p1RandomnessGenerator, player2, 1, p2RandomnessGenerator, {from: player1});
+        await instance.judgeWinner(gameID, player1, 2, p1RandomnessGenerator, player2, 2, p2RandomnessGenerator, {from: player1});
         
         var winnerAddr = await instance.getWinnerDetails.call(gameID, {from: player1});
-        console.log(winnerAddr);
-        
-        assert(instance.balance !== '');
+        console.log("winner is " , winnerAddr);
+        assert(winnerAddr != player1);
+        assert(winnerAddr != player2);
     });
+    
+    
 
 });
