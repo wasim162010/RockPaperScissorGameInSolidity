@@ -1,7 +1,7 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
 var dotenvConfig = require('dotenv').config();
 
-const MNEMONIC = 'paste your mnenomic here'
+const MNEMONIC = 'put your mnemonic here'
 
 //'short decade demand train total truck awkward utility fire tail wide sign';
 //'chicken wash price brick river negative potato train put evil horn service';
@@ -58,7 +58,8 @@ module.exports = {
         return new HDWalletProvider(MNEMONIC, "https://ropsten.infura.io/v3/9116e53c01e14b0580e566fc02645003")
       },
       network_id: 3,
-      gas: 7852834      
+      gas: 7852834,
+      setTimeout: 5000000000    
     }
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.

@@ -9,36 +9,41 @@ contract RockPaperScissors {
    
     struct GameData {
        
-       address playerOneAddress;
+       address payable playerOneAddress;
        bytes32 playerOneChoice;
        uint playerOneBetAmount;
       
-       address playerTwoAddress;
+       address payable playerTwoAddress;
        bytes32 playerTwoChoice;
        uint playerTwoBetAmount;
 
-       uint expiryTime;
+     //  uint expiryTime;
 
-       uint startDate ;//new
-       uint endDate;//1518220800 //new
+       uint startDate ;
+       uint endDate;
 
-       address winner;
+       address payable winner;
 
-       //uint diff = (endDate - startDate) / 60 / 60 / 24; 
 
     }
 
     mapping (bytes32 => GameData) gameIDToGame;
-    enum Hand {NONE, Rock, Scissors, Paper}
 
     event BetPlaced(bytes32 gameID, address playerAddr, uint betAmt, uint choice);
 
     event GameEnded(bytes32 gameID, string gameResult, address winnerAddr);
   
+    event rewardedWinner(bytes32 gameID, uint256 amount, address winnerAddr);
+    
+    event gameExpired(bytes32 gameID, uint256 amount);
+
     constructor() public {
 
     }
 
+/*
+to generate the unique game id
+*/
     function newGameID()   
         public view
         returns (bytes32 _hashGameID)
@@ -46,6 +51,10 @@ contract RockPaperScissors {
         return keccak256(abi.encodePacked(msg.sender));
     }
     
+    
+/*
+to start the game by choosing the option and sending ethers as a bet amount
+*/
     function initiateGame(uint _choice, uint playerRandomness, bytes32 gameID) payable public returns(bytes32) {
        
         bytes32 _gameId =gameID; 
@@ -53,38 +62,44 @@ contract RockPaperScissors {
         require (_choice >= 0); 
         require (_choice <= 2); 
     
-        if(address(gameIDToGame[_gameId].playerOneAddress) == address(0)) { //player 1 has placed his bet , so player 2 will put his bet
+        if(address(gameIDToGame[_gameId].playerOneAddress) != address(0)) { //player 1 has placed his bet , so player 2 will put his bet
 
-          //  require(now < gameIDToGame[_gameId].expiryTime, "Max waiting time has already passed");
+          
+            if(now > gameIDToGame[_gameId].endDate) { //it has exceeded expiry time
             
-            gameIDToGame[_gameId].playerOneAddress = msg.sender;
-            gameIDToGame[_gameId].playerOneChoice = keccak256(abi.encodePacked(_choice, playerRandomness));
-            gameIDToGame[_gameId].playerOneBetAmount = msg.value;
+                handleGameExpiry(gameID);
+
+            } else {
             
-            gameIDToGame[_gameId].startDate = now; //new
-            gameIDToGame[_gameId].endDate = now + 1 days; //new
-           
+                gameIDToGame[_gameId].playerTwoAddress = msg.sender;
+                gameIDToGame[_gameId].playerTwoChoice = keccak256(abi.encodePacked(_choice, playerRandomness));
+                gameIDToGame[_gameId].playerTwoBetAmount = msg.value;
+                
+            }
+            emit BetPlaced(gameID, msg.sender, msg.value, _choice);
         } else {//player 1 will place his bet
-
-            uint diff = (gameIDToGame[_gameId].endDate - gameIDToGame[_gameId].startDate) / 60 / 60 / 24; // 40 days 
-            require(diff<=1, "Expiry time has passed"); //new
-
-            gameIDToGame[_gameId].playerTwoAddress = msg.sender;
-            gameIDToGame[_gameId].playerTwoChoice = keccak256(abi.encodePacked(_choice, playerRandomness));
-            gameIDToGame[_gameId].playerTwoBetAmount = msg.value;
-            
+    
+                gameIDToGame[_gameId].playerOneAddress = msg.sender;
+                gameIDToGame[_gameId].playerOneChoice = keccak256(abi.encodePacked(_choice, playerRandomness));
+                gameIDToGame[_gameId].playerOneBetAmount = msg.value;
+                gameIDToGame[_gameId].startDate = now; 
+                gameIDToGame[_gameId].endDate = now + 1 days; 
+            emit BetPlaced(gameID, msg.sender, msg.value, _choice);
         }
-        emit BetPlaced(gameID, msg.sender, msg.value, _choice);
-        return _gameId;
+            
+            return _gameId;
     }
 
 
+/*
+to find out the winner of a game and  reward winner.
+*/
     function judgeWinner(
             bytes32 _gameId,
-            address playerOne,
+            address payable playerOne,
             uint _playerOneChoice,
             uint playerOneRandomness, // CHANGED - Randomness added which prevents the other user from correctly guessing the move of the other player
-            address playerTwo,
+            address payable playerTwo,
             uint _playerTwoChoice,
             uint playerTwoRandomness
             ) public returns(string memory)
@@ -123,33 +138,71 @@ contract RockPaperScissors {
                 return winningParty;
 }
 
-    
+/*
+to transfer the winning amount to the winner's account.
+*/ 
 function rewardWinner(address  winnerAddress, bytes32 _gameId) private returns(bool){
 
-        if(gameIDToGame[_gameId].playerOneAddress == winnerAddress) {
+        uint256 contBal = address(this).balance;
+
+        if(gameIDToGame[_gameId].playerOneAddress == gameIDToGame[_gameId].winner) {
             
-            require(address(this).balance >= (gameIDToGame[_gameId].playerOneBetAmount * 2), "Contract balance is not sufficient");
-            address payable _payableWinnerAddress = address(uint160(winnerAddress));
-            _payableWinnerAddress.transfer(gameIDToGame[_gameId].playerOneBetAmount * 2); //level 1
-            return true;
+             uint256 winnerBetAmt = gameIDToGame[_gameId].playerOneBetAmount ;
+             
+             if((winnerBetAmt * 2) <= contBal) {
+                 uint256 amtToTransfer = winnerBetAmt * 2;
+                 address(gameIDToGame[_gameId].winner).transfer(amtToTransfer);
+                 emit rewardedWinner(_gameId, winnerBetAmt , gameIDToGame[_gameId].winner);
+             } else {
+    // if this current bakance of contract is not enough to pay thw twice of the winner's bet amount, then at least amount left 
+    // post deduction of other's bet amount from contract balance will be transferred.
+                 uint256 amtToTransfer = contBal - gameIDToGame[_gameId].playerTwoBetAmount;
+                 address(gameIDToGame[_gameId].winner).transfer(amtToTransfer);
+             }
+           return true;
                 
-        } else if(gameIDToGame[_gameId].playerOneAddress == winnerAddress) {
+        } else if(gameIDToGame[_gameId].playerTwoAddress == gameIDToGame[_gameId].winner) {
             
-            require(address(this).balance >= (gameIDToGame[_gameId].playerTwoBetAmount * 2), "Contract balance is not sufficient");
-            address payable _payableWinnerAddress = address(uint160(winnerAddress));
-            _payableWinnerAddress.transfer(gameIDToGame[_gameId].playerTwoBetAmount * 2); //level 1
+            uint256 winnerBetAmt = gameIDToGame[_gameId].playerTwoBetAmount ;
+            
+            if((winnerBetAmt * 2) <= contBal) {
+                 uint256 amtToTransfer = winnerBetAmt * 2;
+                 address(gameIDToGame[_gameId].winner).transfer(amtToTransfer);
+                 emit rewardedWinner(_gameId, winnerBetAmt , gameIDToGame[_gameId].winner);
+             } else {
+    // if this current bakance of contract is not enough to pay thw twice of the winner's bet amount, then at least amount left 
+    // post deduction of other's bet amount from contract balance will be transferred.
+                 uint256 amtToTransfer = contBal - gameIDToGame[_gameId].playerOneBetAmount;
+                 address(gameIDToGame[_gameId].winner).transfer(amtToTransfer);
+             }
             return true;
         } 
         return false;
     
 }
 
+/*
+to fetch the winner corresponding to the game id.
+*/
 function getWinnerDetails(bytes32 gameID) public view returns(address){
 
     return gameIDToGame[gameID].winner;
 
 }
 
+
+/*
+to transfer back the amt that was transferred as a bet amount back to the player one address.
+*/
+function handleGameExpiry(bytes32 _gameId) private returns(bool){
+        
+         address(gameIDToGame[_gameId].playerOneAddress).transfer(gameIDToGame[_gameId].playerOneBetAmount);
+         emit gameExpired( _gameId, gameIDToGame[_gameId].playerOneBetAmount);
+    }
+
+/*
+to handle the tie.
+*/
 function handleTie(address playerOne, address playerTwo, bytes32 _gameId) private { 
   
     address payable _payableOneAddress = address(uint160(playerOne));
@@ -163,16 +216,10 @@ function handleTie(address playerOne, address playerTwo, bytes32 _gameId) privat
 
 
 
+
+
+
 }
-
-
-
-/*
-1 InitiateGame() : create game id using msg.sender and now and return it . It will generate the 
-2 Place the bet() : place your bet : by entering the player address, value(in wei) and bet. Store the bet in the ledger
-    
-3 Evaluate() : player 2 
-*/
 
 
 
