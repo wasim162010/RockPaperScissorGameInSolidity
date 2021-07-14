@@ -69,6 +69,20 @@ Deployed contract address :    0x18A8c8C3c86ff0C6DFA71CD2a4dD976FbFabb21D
 ![image](https://user-images.githubusercontent.com/47940538/124920844-63e7c200-e015-11eb-91b3-ef74881e74e5.png)
 
 
+Bug resolution:
+
+I have found out a bug in the code and have made code changes. Secondly, in the previous code when the contract balance is not enough to twice the bet amount of the winner, then no transfer was happening. Post change, now the amount equal to the bet amount will be transferred to the winner in case the contract does not have the enough balance to reward twice the bet amount to the winner as a transfer.
+
+Updated contract address [Ropsten] : 0x534d63d4b9e5cA173fF11326998ABea2517C0E11
+
+
+ 
+
+
+
+
+
+![image](https://user-images.githubusercontent.com/47940538/125693583-f272dade-b542-4485-bedf-f242130b3c0a.png)
 
 
 
